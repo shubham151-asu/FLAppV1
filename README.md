@@ -31,4 +31,4 @@ To run server
 	python server.py
 
 
-To run the gracefully First start the server and then start all clients 
+To run the program gracefully, first start the server and then start all clients 
