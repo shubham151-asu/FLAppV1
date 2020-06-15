@@ -23,7 +23,7 @@ To run server
 
 	Install Dependencies
 	---------------------
-	assuming python 3>0 and pip install in the system
+	Assuming python 3>=0 and pip already installed in the system
 	use command: pip install -r requirements.txt
 
 	Run
