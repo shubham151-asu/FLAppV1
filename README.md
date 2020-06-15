@@ -5,8 +5,8 @@
  parameters and performs aggregation and sends back aggregated model to the
  clients. There are multiple possible implementation of federated learning such as
  Horizontal Learning, Vertical Learning or Transfer learning. The implemented 
- algorithm uses Horizontal learning in way (without using SGD). It uses a 
- simple ML algorithm like Naive Bayes because of the property of conditional
+ algorithm uses Horizontal learning in a way (without using SGD used in deep learning). 
+ It uses a simple ML algorithm like Naive Bayes because of the property of conditional
  independence among the features. The features learnt from different clients
  can be aggregated and the aggregated model parameters can be sent back to the 
  clients for classification. As the model learns the aggregated model converges 
