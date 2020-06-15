@@ -1,9 +1,25 @@
+############################################################
+# Created on Sunday 21:02:53 2020                        #
+#                                                          #
+# @author: spraka21@asu.edu                                #
+#                                                          #
+# Client Program to Drive the Federated Learning Tasks     #
+############################################################
+
 import sys
 import scipy.io
 import numpy as np
 import pandas as pd
 from scipy.stats import multivariate_normal
 
+################################################################################
+# Class to run a Federated Learning Tasks on this Client                       #
+# input:                                                                       #
+#    clientID : The requesterID specified in the 'client.ini' file             #                                                           #
+#    startrow : starting row for the current client specified in config file   #
+#    Iterationlen : Iterationlen for the current client specified in config    #
+#                   file                                                       #
+################################################################################
 
 class runfl:
     def __init__(self,flplan,startrow,iterationlen):
@@ -13,12 +29,18 @@ class runfl:
         self.load_flplan(flplan,startrow,iterationlen)
         self.numpyfile = scipy.io.loadmat("mnist_data.mat")
 
+    ################################################################################
+    # Function to load FL Plan from server after announcement received             #
+    ################################################################################
     def load_flplan(self,flplan,startrow,iterationlen):
         self.fliterationlen = iterationlen
         self.startrow = startrow
         self.features = flplan['features']
         self.currentTerm = int(flplan['currentIteration'])
 
+    ################################################################################
+    # Function to return a dummy FL report                                         #
+    ################################################################################
     def get_new_flpan(self):
         fldata_ds = {
             'features': {
@@ -35,6 +57,9 @@ class runfl:
         }
         return fldata_ds
 
+    ################################################################################
+    # Function to generate FL report after the model has learnt                    #
+    ################################################################################
     def generate_fl_report(self):
         response_fl_report = self.get_new_flpan()
         response_fl_report['features']['count7'] = self.count7
@@ -47,6 +72,9 @@ class runfl:
         #response_fl_report['submitterID'] = self.submitterID
         return response_fl_report
 
+    ################################################################################
+    # Function to pre-processes to aggregate label data for the MNIST dataset      #
+    ################################################################################
     def preprocessing(self):
         print ('PreProcessing started')
         tsrows = self.numpyfile['tsX'].shape[0]
@@ -87,6 +115,9 @@ class runfl:
         #print (self.train_Y)
         print('PreProcessing done')
 
+    ################################################################################
+    # Function to learn model parameter from the aggregated labels                 #
+    ################################################################################
     def feature_calculation(self):
         self.preprocessing()
         print ('Feature Calculation start')
@@ -115,7 +146,10 @@ class runfl:
         self.covariance8 = trx_8.cov().values
         print('Feature Calculation done')
 
-
+    ################################################################################
+    # Function to make prediction from the model parameters learnt from client data#
+    # in a given iteration                                                         #
+    ################################################################################
     def prediction(self):
         print('Prediction process Started from Client Data')
         tsrows = self.numpyfile['tsX'].shape[0]
@@ -144,6 +178,11 @@ class runfl:
             self.predictionforserver()
         return self.generate_fl_report()
 
+
+    ################################################################################
+    # Function to make prediction from the aggregated model parameters learnt from #
+    # server in a given iteration                                                  #
+    ################################################################################
     def predictionforserver(self):
         print('Prediction process Started from Server Data')
         tsrows = self.numpyfile['tsX'].shape[0]
@@ -175,6 +214,7 @@ class runfl:
                 accurate_count += 1
         self.accuracy = accurate_count / tsrows
         print ("Precidiction accuracy from server Data",self.accuracy)
+        print('Prediction process Done')
         return
 
 

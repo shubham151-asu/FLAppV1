@@ -60,6 +60,9 @@ def waitandcheck(destDir):
     return filecount
 
 
+################################################################################
+# Function to aggregate model parameters received from all clients             #
+################################################################################
 def aggregate(destDir, filecount, iteration):
     count7 = 0
     count8 = 0
@@ -97,6 +100,10 @@ def aggregate(destDir, filecount, iteration):
     openfile.close()
 
 
+################################################################################
+# Function to make the calls synchronous by polling and waiting until all the  #
+# clients have sent an FL request or FL report in a given iteration            #
+################################################################################
 def startPoll(destDir,iteration):
     filecount = waitandcheck(destDir)
     while True:
