@@ -1,9 +1,9 @@
 # FLAppV1
  Federated Learning is a type of distributed Machine Learning in which the
- ML algorithms runs on the edge devices or clients and model parameters are 
- send to the server instead of data. Server receives the model parameters 
- and performs aggregation and sends back aggregated model to the clients. 
- There are multiple possible implementation of federated learning such as
+ ML algorithms runs on the edge devices or clients and model or model
+ parameters are send to the server instead of data. Server receives the model 
+ parameters and performs aggregation and sends back aggregated model to the
+ clients. There are multiple possible implementation of federated learning such as
  Horizontal Learning, Vertical Learning or Transfer learning. The implemented 
  algorithm uses Horizontal learning in way (without using SGD). It uses a 
  simple ML algorithm like Naive Bayes because of the property of conditional
