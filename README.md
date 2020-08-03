@@ -1,16 +1,23 @@
-# FLAppV1
- Federated Learning is a type of distributed Machine Learning in which the
- ML algorithms runs on the edge devices or clients and model or model
- parameters are send to the server instead of data. Server receives the model 
- parameters and performs aggregation and sends back aggregated model to the
- clients. There are multiple possible implementation of federated learning such as
- Horizontal Learning, Vertical Learning or Transfer learning. The implemented 
- algorithm uses Horizontal learning in a way (without using SGD used in deep learning). 
- It uses a simple ML algorithm like Naive Bayes because of the property of conditional
- independence among the features. The features learnt from different clients
- can be aggregated and the aggregated model parameters can be sent back to the 
- clients for classification. As the model learns the aggregated model converges 
- and classification accuracy achieved is as good as learnt from a single system.
+In Distributed Machine learning, ML algorithms run on different or isolated Machines.
+Based on the performance and learning requirements, datasets availability(distributed or centralized),
+few of the use cases can be written as
+Case1: Multiple ML algorithms run on different systems using datasets which is available in one storage server. 
+       This approach can also be used in ensemble learning.
+Case2: One machine learning algorithm runs on a subset of data on different systems and the model generated can be aggregated. 
+       Such algorithms can large datasets
+
+For every use case, there is a need for system design that solves the bottleneck of R/O operations from the storage server 
+at the same time and does not compromise with high performance. An extended version of Case2 is Federated learning
+where ML algorithms run on the edge devices or clients and model or model parameters are sent to the server instead
+of data. The server receives the model parameters and performs aggregation and sends back the aggregated model to the clients. 
+There are multiple possible implementations of federated learning such as Horizontal Learning, Vertical Learning or 
+Transfer learning. 
+
+In this code, the implemented algorithm uses Horizontal learning in a way (without using SGD used in deep learning). 
+It uses a simple ML algorithm like Naive Bayes because of the property of conditional independence among the features.
+The features learned from different clients can be aggregated and the aggregated model parameters can be sent back to the
+clients for classification. As the model learns the aggregated model converges and classification accuracy achieved is
+as good as learning from a single system.
  
 
 To run server
