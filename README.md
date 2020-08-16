@@ -1,3 +1,5 @@
+Distributed Machine Learning
+
 In Distributed Machine learning, ML algorithms run on different or isolated Machines.
 Based on the performance and learning requirements, datasets availability(distributed or centralized),
 few of the use cases can be written as:-
@@ -10,15 +12,15 @@ few of the use cases can be written as:-
 For every use case, there is a need for system design that solves the bottleneck of R/O operations from the storage server 
 at the same time and does not compromise with high performance. An extended version of Case2 is Federated learning
 where ML algorithms run on the edge devices or clients and model or model parameters are sent to the server instead
-of data. The server receives the model parameters and performs aggregation and sends back the aggregated model to the clients. 
-There are multiple possible implementations of federated learning such as Horizontal Learning, Vertical Learning or 
-Transfer learning. 
+of data. The master server receives the model parameters and performs aggregation and sends back the aggregated model 
+to the clients. There are multiple possible implementations of federated learning task such as Horizontal Learning, 
+Vertical Learning or Transfer learning. 
 
 In this code, the implemented algorithm uses Horizontal learning in a way (without using SGD used in deep learning). 
-It uses a simple ML algorithm like Naive Bayes because of the property of conditional independence among the features.
-The features learned from different clients can be aggregated and the aggregated model parameters can be sent back to the
-clients for classification. As the model learns the aggregated model converges and classification accuracy achieved is
-as good as learning from a single system.
+It uses a Naive Bayes because of the property of conditional independence among the features.The features learned
+from different clients can be aggregated and the aggregated model parameters can be sent back to theclients for
+classification. As the model learns the aggregated model converges and classification accuracy achieved is as good as 
+learning from a single system.
  
 
 To run server
@@ -36,7 +38,9 @@ To run server
 
 	Run
 	---------------------
-	python server.py
+	master server : python server.py
+	clients : python client.py (data set for the client can be found at 
+
 
 
 To run the program gracefully, first start the server and then start all clients 
