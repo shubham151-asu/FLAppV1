@@ -39,7 +39,7 @@ To run server
 	Run
 	---------------------
 	master server : python server.py
-	clients : python client.py (data set for the client can be found at 
+	clients : python client.py (data set for the client can be found at https://drive.google.com/drive/folders/1un2aI_8X9tzYhzlT8na0SQteVetfJSDm?usp=sharing
 
 
 
